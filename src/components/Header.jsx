@@ -8,9 +8,9 @@ const styles = {
     }
 }
 
-export default function Header({title}) {
+export default function Header({title, customStyles}) {
     return (
-        <div style={styles.header}>
+        <div style={{ ...customStyles, ...styles.header}}>
             {title}
         </div>
     )

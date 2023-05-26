@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import Header from "../components/Header"
-import CreateProduct from "../components/CreateProduct"
 import ProductList from "../components/ProductList"
 import SearchBox from "../components/SearchBox"
+import { fetchProducts } from "../api/api"
 
 const styles = {
     wrapper: {
@@ -16,17 +16,7 @@ const styles = {
         justifyContent: "space-between",
         flexWrap: "wrap",
         marginTop: "20px"
-        
     }
-}
-
-async function fetchProducts(fileName) {
-    const response = await fetch(fileName, { headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-    })
-    return response.json()
 }
 
 export default function Products() {
@@ -34,7 +24,7 @@ export default function Products() {
     const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
-        fetchProducts('data.json').then(json => {
+        fetchProducts().then(json => {
             console.log(json)
             setProducts(json)
         })
@@ -53,10 +43,10 @@ export default function Products() {
     );
 
     return (
+
         <div style={styles.wrapper}>
             <div style={styles.headerContainer}>
                 <Header title={"All products"} />
-                <CreateProduct />
             </div>
             <div>
                 <SearchBox onSearchCallback={onSearchCallback}/>
