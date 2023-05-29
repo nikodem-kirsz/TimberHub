@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Header from "../components/Header"
-import ProductList from "../components/ProductList"
+import { ProductList } from "../components/ProductList"
 import SearchBox from "../components/SearchBox"
 import { fetchProducts } from "../api/api"
 
@@ -25,7 +25,6 @@ export default function Products() {
 
     useEffect(() => {
         fetchProducts().then(json => {
-            console.log(json)
             setProducts(json)
         })
     }, [])
@@ -34,12 +33,15 @@ export default function Products() {
         setSearchQuery(search)
     }
 
-    const filteredData = products.filter((product) =>
+    const filteredData = products.filter((product) => {
+    return (
         product.species.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.drying_method.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.grade.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.usage.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.id.toString().toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    }
     );
 
     return (

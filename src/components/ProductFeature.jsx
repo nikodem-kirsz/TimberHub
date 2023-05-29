@@ -1,4 +1,4 @@
-export default function ProductFeature({title, config, icon}) {
+export default function ProductFeature({title, config, values, icon, onChange}) {
     const styles = {
         title: {
             fontFamily: 'Mukta Mahee',
@@ -48,16 +48,16 @@ export default function ProductFeature({title, config, icon}) {
     }
 
     function renderSelectOptions(selectOptions) {
-        return selectOptions.map(selectOption => {
-          return <option value="volvo">{selectOption}</option>
+        return selectOptions.map((selectOption, index) => {
+          return <option key={`${selectOption}_${index}`} value={selectOption}>{selectOption}</option>
         })
       }
      
-    function Select({name, options}) {
+    function Select({name, label, options, value, onChange}) {
         return (
             <div style={styles.productFeature}>
-              <label style={styles.label}>{name}</label>
-              <select style={styles.input}>
+              <label htmlFor={name} style={styles.label}>{label}</label>
+              <select value={value} id={name} name={name} required={true} onChange={onChange} style={styles.input}>
                 {renderSelectOptions(options)}
               </select>
             </div>
@@ -68,8 +68,8 @@ export default function ProductFeature({title, config, icon}) {
         <span style={styles.item}>      
           <div style={styles.title}><img style={styles.img} src={icon} alt={`${title} Icon`}></img>{title}</div>
           <div style={styles.row}>
-            {config.map(option => {
-                return <Select name={option.name} options={option.options}/>
+            {config.map((option, index) => {
+                return <Select key={`${option}_${index}`} label={option.label} name={option.name} options={option.options} value={values[option.name]} onChange={onChange}/>
             })}
             </div>
         </span>

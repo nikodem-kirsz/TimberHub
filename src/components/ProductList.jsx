@@ -1,7 +1,7 @@
 import Tile from "./Tile"
-import wood from '../wood.svg'
+import wood from '../icons/wood.svg'
 
-export default function ProductList({ products }) {
+export function ProductList({ products }) {
 
     const styles = {
         table: {
@@ -81,6 +81,7 @@ export default function ProductList({ products }) {
                                                 thickness={dimension.thickness}
                                                 width={dimension.width}
                                                 length={dimension.length}
+                                                data-testid={`dimension-${index + 1}`}
                                             />
                                         )
                                     })}
@@ -94,7 +95,7 @@ export default function ProductList({ products }) {
     )
 }
 
-function convertTimestampToDate(timestamp) {
+export function convertTimestampToDate(timestamp) {
     // Multiply the timestamp by 1000 to convert it to milliseconds
     const milliseconds = timestamp * 1000;
 

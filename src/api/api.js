@@ -1,22 +1,38 @@
-const fileName = 'data.json'
+export const fetchProducts = async () => {
+    try {
+        const response = await fetch(`/api/data`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+        return response.json()
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
 
-export async function fetchProducts() {
-    const response = await fetch(fileName, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+}
+
+export const createProduct = async (productData) => {
+    try {
+        console.log(productData)
+        const response = await fetch(`/api/data`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(productData),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to create product');
         }
-    })
-    return response.json()
-}
 
-export async function createProduct(product) {
-    const response = await fetch(fileName, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(product)
-    })
-}
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};

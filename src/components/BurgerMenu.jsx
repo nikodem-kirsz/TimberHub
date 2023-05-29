@@ -11,8 +11,9 @@ export default function BurgerMenu({ onToggleMenu }) {
     };
 
     const onCreateProduct = (event) => {
-        event.preventDefault()
-        createProduct(event.target.value)
+        console.log(event)
+        debugger;
+        createProduct(event)
     }
 
     const styles = {

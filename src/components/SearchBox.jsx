@@ -1,4 +1,4 @@
-import search from "../search.svg"
+import search from "../icons/search.svg"
 export default function SearchBox({onSearchCallback}) {
     const styles = {
         wrapper: {

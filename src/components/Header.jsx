@@ -10,7 +10,7 @@ const styles = {
 
 export default function Header({title, customStyles}) {
     return (
-        <div style={{ ...customStyles, ...styles.header}}>
+        <div style={{ ...styles.header, ...customStyles}}>
             {title}
         </div>
     )

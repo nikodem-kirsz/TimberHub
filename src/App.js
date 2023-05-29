@@ -1,5 +1,4 @@
-import logo from './logo.png';
-import './App.css';
+import logo from './icons/logo.png';
 import Products from './pages/Products';
 import BurgerMenu from './components/BurgerMenu';
 import { useState } from 'react'
@@ -18,12 +17,8 @@ function App() {
       boxShadow: "0px 0px 24px rgba(0, 0, 0, 0.13)"
     },
     container: {
-      // background: isMenuOpen ? "rgba(0, 0, 0, 0.3)" : "rgba(0, 0, 0, 1)",
-
-      opacity: isMenuOpen ? 0.3 : 1, // Adjust the opacity value as needed
+      opacity: isMenuOpen ? 0.3 : 1,
       transition: 'opacity 0.3s ease-out',
-      // backgroundColor: isMenuOpen ? "rgba(0, 0, 0, 0.3)" : "rgba(0, 0, 0, 0)"
-      // zIndex: 2000
     }
   }
 
