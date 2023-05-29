@@ -2,10 +2,10 @@
 
 ## Available Scripts
 
-In the project directory, react has to be built and then server from a node server:
-
-### `npm run build`
+In the project directory build react app 
+ `npm run build`
 ### `cd src/`
+And run node server serving the app and managing file storage of products
 ### `node server`
 
 Runs the app in the development mode.\
